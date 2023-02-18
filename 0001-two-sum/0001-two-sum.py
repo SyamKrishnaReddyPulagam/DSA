@@ -4,5 +4,4 @@ class Solution(object):
             for number in range(num+1,len(nums)):
                 if nums[num] + nums[number] == target:
                     return [num,number]
-                else :
-                    number=number+1            
+                           
