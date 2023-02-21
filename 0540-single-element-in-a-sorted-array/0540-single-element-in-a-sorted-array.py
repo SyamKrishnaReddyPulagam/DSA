@@ -1,7 +1,7 @@
 class Solution(object):
     def singleNonDuplicate(self, nums):
-        i, j = 0, len(nums) // 2
-        ans = -1
+        i=0
+        j = len(nums)
         while i <= j:
             mid = (i + j) // 2
             idx = mid * 2
