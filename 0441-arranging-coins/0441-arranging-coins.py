@@ -3,9 +3,7 @@ class Solution(object):
         if(n==1):
             return 1
         x=1
-        y=0
         while(n>=x):
             n=n-x
             x+=1
-            y+=1
-        return y
+        return x-1
