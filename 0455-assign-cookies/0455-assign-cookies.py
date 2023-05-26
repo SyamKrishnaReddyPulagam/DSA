@@ -8,4 +8,6 @@ class Solution(object):
                 i+=1
                 x+=1
             j+=1
+        if(i>len(s)):
+            return len(s)
         return x
