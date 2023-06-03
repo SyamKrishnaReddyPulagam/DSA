@@ -1,6 +1,6 @@
 class Solution(object):
     def flipAndInvertImage(self, image):
-        n=len(image)
+        """n=len(image)
         a=0
         b=0
         while a<n:
@@ -22,4 +22,5 @@ class Solution(object):
                 j+=1
             j=0
             i+=1
-        return image
+        return image"""
+        return [[1-i for i in row[::-1]] for row in image]
