@@ -23,4 +23,4 @@ class Solution(object):
             j=0
             i+=1
         return image"""
-        return [[1-i for i in row[::-1]] for row in image]
+        return [[1 ^ i for i in reversed(row)] for row in image]
