@@ -4,8 +4,6 @@ class Solution(object):
         for i in nums:
             nums1.append(i)
         nums1.sort()
-        x=nums1[len(nums)-1]
-        y=nums1[len(nums)-2]
-        if x>=y*2:
-            return nums.index(x)
+        if nums1[len(nums)-1]>=nums1[len(nums)-2]*2:
+            return nums.index(nums1[len(nums)-1])
         return -1
