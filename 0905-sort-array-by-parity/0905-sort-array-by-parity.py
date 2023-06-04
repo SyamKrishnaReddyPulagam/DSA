@@ -1,3 +1,14 @@
 class Solution(object):
     def sortArrayByParity(self, nums):
-        return [i for i in nums if not i % 2] + [i for i in nums if i % 2]
+        size = len(nums)
+        res = [None] * size
+        start = 0
+        end = size - 1
+        for val in nums:
+            if val % 2 == 1:
+                res[end] = val
+                end = end -1
+            else:
+                res[start] = val
+                start = start + 1
+        return res
