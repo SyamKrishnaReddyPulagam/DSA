@@ -1,13 +1,10 @@
 class Solution(object):
     def canMakeArithmeticProgression(self, arr):
         arr.sort()
-        N = len(arr)
-        a = arr[0]
-        diff = arr[1] - a
-        for i in range(N):
-            a = a
+        diff = arr[1] - arr[0]
+        for i in range(len(arr)):
             b = i * diff
-            res = a + b
+            res = arr[0] + b
             if arr[i] != res:
                 return False    
         return True
