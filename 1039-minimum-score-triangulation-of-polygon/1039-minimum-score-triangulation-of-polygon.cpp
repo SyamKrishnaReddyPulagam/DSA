@@ -21,7 +21,7 @@ public:
             for(int j=i+2;j<n;j++){
                 int a=INT_MAX;
                 for(int k=i+1;k<j;k++){
-                    a=min(a,v[i]*v[j]*v[k]+topdown(v,i,k,dp)+topdown(v,k,j,dp));
+                    a=min(a,v[i]*v[j]*v[k]+dp[i][k]+dp[k][j]);
                 }
                 dp[i][j]=a;
             }
@@ -31,7 +31,7 @@ public:
     int minScoreTriangulation(vector<int>& values) {
         int n=values.size();
         vector<vector<int>> dp(n,vector<int>(n,-1));
-        return topdown(values,0,n-1,dp);
-        //return bottomup(values);
+        //return topdown(values,0,n-1,dp);
+        return bottomup(values);
     }
 };
