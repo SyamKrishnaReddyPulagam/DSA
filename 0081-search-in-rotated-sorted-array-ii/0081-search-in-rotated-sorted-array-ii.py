@@ -14,7 +14,7 @@ class Solution(object):
                 minm=nums1[i]
                 a=i
         print(a)
-        if minm==nums1[0] or target:
+        if minm==nums1[0] :
             return s(0,len(nums1),nums1,target)
         if(target>=nums1[0]):
             return s(0,a,nums1,target)
