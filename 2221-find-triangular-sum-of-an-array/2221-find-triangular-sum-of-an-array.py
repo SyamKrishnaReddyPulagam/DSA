@@ -1,15 +1,11 @@
 class Solution:
     def triangularSum(self, nums: List[int]) -> int:
-        x=0
+        n=len(nums)
         if len(nums)==1:
             return nums[0]
         else:
-            while len(nums)!=1:
-                y=[]
+            while n!=1:
                 for i in range(len(nums)-1):
-                    x=nums[i+1]+nums[i]
-                    if x>9:
-                        x=x-10
-                    y.append(x)
-                nums=y
+                    nums[i]=(nums[i]+nums[i+1])%10
+                n-=1
         return nums[0]
