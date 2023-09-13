@@ -1,6 +1,28 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        x=1
+        prefix=1
+        pre=[0]*len(nums)
+        for i in range(len(nums)):
+            prefix*=nums[i]
+            pre[i]=prefix
+        postfix=1
+        post=[0]*len(nums)
+        for i in range(len(nums)-1,-1,-1):
+            postfix*=nums[i]
+            post[i]=postfix
+        res=[0]*len(nums)
+        res[0]=post[1]
+        res[-1]=pre[-2]
+        for i in range(1,len(res)-1):
+            res[i]=pre[i-1]*post[i+1]
+        return res
+        
+        
+        
+        
+        
+        
+        """x=1
         y=0
         for i in nums:
             if i==0:
@@ -23,4 +45,6 @@ class Solution:
                 else:
                     nums[i]=0
             
-        return nums
+        return nums"""
+        
+        
