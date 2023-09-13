@@ -1,6 +1,6 @@
 class Solution:
     def increasingTriplet(self, nums: List[int]) -> bool:
-        x=sorted(nums)
+        """x=sorted(nums)
         if x[::-1]==nums:
             return False
         leftmin=[0]*len(nums)
@@ -13,5 +13,15 @@ class Solution:
             rightmin[i]=max(rightmin[i+1],nums[i])
         for i in range(len(nums)):
             if leftmin[i]<nums[i] and rightmin[i]>nums[i]:
+                return True
+        return False"""
+        
+        i,j=float("inf"),float("inf")
+        for k in nums:
+            if k<=i:
+                i=k
+            elif k<=j:
+                j=k
+            else:
                 return True
         return False
