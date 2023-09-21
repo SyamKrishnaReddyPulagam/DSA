@@ -1,5 +1,4 @@
 class Solution(object):
-    import math
     def findMedianSortedArrays(self, nums1, nums2):
         nums3=nums1 + nums2
         nums3= sorted(nums3)
@@ -12,4 +11,3 @@ class Solution(object):
         else:
             y=nums3[x/2]
             return y
-        
