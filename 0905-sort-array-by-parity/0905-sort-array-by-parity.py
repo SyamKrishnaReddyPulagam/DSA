@@ -1,14 +1,13 @@
-class Solution(object):
-    def sortArrayByParity(self, nums):
-        size = len(nums)
-        res = [None] * size
-        start = 0
-        end = size - 1
-        for val in nums:
-            if val % 2 == 1:
-                res[end] = val
-                end = end -1
+class Solution:
+    def sortArrayByParity(self, nums: List[int]) -> List[int]:
+        ans=[0]*len(nums)
+        start=0
+        end=len(nums)-1
+        for i in nums:
+            if i%2==0:
+                ans[start]=i
+                start+=1
             else:
-                res[start] = val
-                start = start + 1
-        return res
+                ans[end]=i
+                end-=1
+        return ans
