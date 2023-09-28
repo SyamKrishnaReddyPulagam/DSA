@@ -7,7 +7,7 @@ class Solution:
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
         def reversed(list1):
             prev=None
-            while list1:
+            while list1: 
                 temp=list1.next
                 list1.next=prev
                 prev=list1
@@ -24,5 +24,6 @@ class Solution:
                 new_node = ListNode(list1.val)
                 new_node.next = list3.next
                 list3.next = new_node
+                list3=list3.next
             list1 = list1.next
-        return list4.next
+        return reversed(list4.next)
