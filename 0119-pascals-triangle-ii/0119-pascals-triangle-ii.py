@@ -1,6 +1,6 @@
 class Solution:
     def getRow(self, rowIndex: int) -> List[int]:
-        numRows=34
+        numRows=rowIndex+1
         nums=[]
         for i in range(1,numRows+1):
             x=[1]*i
