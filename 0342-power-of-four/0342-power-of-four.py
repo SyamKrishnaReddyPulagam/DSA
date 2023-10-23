@@ -1,9 +1,8 @@
-class Solution(object):
-    def isPowerOfFour(self, n):
-        if n<1:
-            return False
-        while n%4==0:
-            n=n/4
-        if n==1:
+class Solution:
+    def isPowerOfFour(self, n: int) -> bool:
+        if n == 1:
             return True
-        return False
+        if n <= 0:
+            return False
+        logarithm_base4 = math.log(n) / math.log(4)
+        return (logarithm_base4 == int(logarithm_base4))
