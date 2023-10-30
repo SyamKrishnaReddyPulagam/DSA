@@ -1,13 +1,15 @@
 class Solution:
     def sortByBits(self, arr: List[int]) -> List[int]:
-        nums=[]
+        dicti={}
+        arr.sort()
         for i in arr:
-            z=bin(i).replace("0b","")
-            z=z.count("1")
-            x=(i,z)
-            nums.append(x)
-        nums=sorted(nums, key=lambda x: (x[1], x[0]))
-        arr=[]
-        for i in nums:
-            arr.append(i[0])
-        return arr
+            z=bin(i).count("1")
+            if z in dicti:
+                dicti[z].append(i)
+            else:
+                dicti[z]=[i]
+        sorted_dicti= sorted(dicti.items(), key=lambda x:x[0])
+        ans=[]
+        for i in sorted_dicti:
+            ans+=i[1]
+        return ans
