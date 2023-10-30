@@ -5,16 +5,28 @@
 #         self.next = next
 class Solution:
     def insertionSortList(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        l=ListNode(0)
-        z=l
-        list1=head
-        arr=[]
+        if not head:
+            return None
+        if head.next==None:
+            return head
+        list2=ListNode(head.val)
+        list1=head.next
+        def manip(list1,val):
+            list3=list1
+            if val<list3.val:
+                x=ListNode(val)
+                x.next=list3
+                return x
+            else:
+                while list3.next and list3.next.val<val:
+                    list3=list3.next
+                temp=list3.next
+                list3.next=ListNode(val)
+                list3=list3.next
+                list3.next=temp
+                return list1
         while list1:
-            arr.append(list1.val)
+            list2=manip(list2,list1.val)
+            #print(list2)
             list1=list1.next
-        arr=sorted(arr)
-        for i in range(len(arr)):
-            x=ListNode(arr[i])
-            l.next=x
-            l=l.next
-        return z.next
+        return list2
