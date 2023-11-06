@@ -1,9 +1,8 @@
 class SeatManager(object):
 
     def __init__(self, n):
-        self.arr=[]
-        for i in range(1,n+1):
-            self.arr.append(i)
+        self.arr=list(range(1, n+1))
+
         heapq.heapify(self.arr)
 
     def reserve(self):
