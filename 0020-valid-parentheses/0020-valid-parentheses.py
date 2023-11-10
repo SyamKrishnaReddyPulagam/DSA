@@ -1,8 +1,16 @@
-class Solution(object):
-    def isValid(self, s):
-        while len(s) > 0:
-            l = len(s)
-            s = s.replace('()','').replace('{}','').replace('[]','')
-            if l==len(s): return False
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack=[]
+        dicti={")":"(","}":"{","]":"["}
+        for i in s:
+            if i in dicti:
+                if stack and stack[-1]==dicti[i]:
+                    stack.pop()
+                else:
+                    return False
+            else:
+                stack.append(i)
+        if stack:
+            return False
         return True
-        
+    
