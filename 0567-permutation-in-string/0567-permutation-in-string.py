@@ -6,15 +6,14 @@ class Solution:
             return False
         if n1==n2:
             return sorted(s1)==sorted(s2)
-        from collections import OrderedDict
         i=0
         dicti1=collections.Counter(s1)
-        dicti1=OrderedDict(sorted(dicti1.items()))
+        dicti1=dict(sorted(dicti1.items()))
         while i<=n2-n1:
             j=i+n1
             z=s2[i:j]
             z=Counter(z)
-            dicti2=OrderedDict(sorted(z.items()))
+            dicti2=dict(sorted(z.items()))
             if dicti1==dicti2:
                 return True
             i+=1
