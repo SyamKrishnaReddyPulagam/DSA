@@ -3,6 +3,8 @@ class Solution:
         nums.sort()
         ans=0
         n=len(nums)
-        for i in range(n//2):
-            ans=max(ans,(nums[i]+nums[-1-i]))
+        i,j=0,n-1
+        while i<=j:
+            ans=max(ans,nums[i]+nums[j])
+            i,j=i+1,j-1
         return ans
