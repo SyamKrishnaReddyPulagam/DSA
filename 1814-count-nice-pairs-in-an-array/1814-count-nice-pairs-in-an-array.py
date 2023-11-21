@@ -6,8 +6,12 @@ class Solution:
         n=len(nums)
         for i in range(n):
             nums[i]=nums[i]-reversed(nums[i])
-        dicti=Counter(nums)
+        dicti={}
         ans=0
-        for i in dicti.values():
-            ans+=((i)*(i-1))//2
+        for i in nums:
+            if i in dicti:
+                ans+=dicti[i]
+                dicti[i]+=1
+            else:
+                dicti[i]=1
         return ans%mod
