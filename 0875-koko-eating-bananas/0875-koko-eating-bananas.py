@@ -7,6 +7,8 @@ class Solution:
             cache=0
             for i in piles:
                 cache+=math.ceil(i/mid)
+                if cache>h:
+                    break
             if cache>h:
                 l=mid+1
             else:
