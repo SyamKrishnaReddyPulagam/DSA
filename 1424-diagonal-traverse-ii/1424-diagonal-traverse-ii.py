@@ -5,12 +5,10 @@ class Solution:
         if n==1:
             return [x for x in nums[0]]
         for i in range(n-1,-1,-1):
-            cache=[]
             z=nums[i]
             for j in range(len(z)):
                 ans.append((i+j,-i,z[j]))
-        ans.sort()
-        fi=[]
-        for i in ans:
-            fi.append(i[2])
-        return fi
+        heapq.heapify(ans)
+        x=len(ans)
+        y=heapq.nsmallest(x,ans)
+        return [i[2] for i in y ]
