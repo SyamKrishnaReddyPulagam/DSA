@@ -8,8 +8,8 @@ class Solution:
             cache=[]
             z=nums[i]
             for j in range(len(z)):
-                ans.append((i+j,i,z[j]))
-        ans.sort(key=lambda x: (x[0], -x[1]))
+                ans.append((i+j,-i,z[j]))
+        ans.sort()
         fi=[]
         for i in ans:
             fi.append(i[2])
