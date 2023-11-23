@@ -1,10 +1,12 @@
-class Solution(object):
-    def isHappy(self, n):
-        if n>(2**31-1):
-            return False
-        for i in range(10):
-            n=sum(int(x) ** 2 for x in str(n))
-        if n==1:
-            return True
-        else:
-            return False
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        z=set()
+        sum1=0
+        while sum1!=1:
+            sum1=sum([ int(i)**2 for i in str(n)])
+            n=sum1
+            if sum1 in z:
+                return False
+            else:
+                z.add(sum1)
+        return True
