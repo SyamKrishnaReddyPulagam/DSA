@@ -1,7 +1,7 @@
-class Solution(object):
-    def missingNumber(self, nums):
-        nums.sort()
-        for i in range(len(nums)):
-            if nums[i]!=i:
-                return i
-        return len(nums)
+class Solution:
+    def missingNumber(self, nums: List[int]) -> int:
+        n=len(nums)
+        ans=0
+        for i in range(n):
+            ans^=i^nums[i]
+        return ans^n
