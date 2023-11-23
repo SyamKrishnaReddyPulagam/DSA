@@ -1,14 +1,15 @@
-class Solution(object):
-    def setZeroes(self, matrix):
-        m, n, firstRowHasZero = len(matrix), len(matrix[0]), not all(matrix[0])
-        for i in xrange(1, m):
-            for j in xrange(n):
-                if matrix[i][j] == 0:
-                    matrix[0][j] = matrix[i][0] = 0
-        for i in xrange(1, m):
-            for j in xrange(n - 1, -1, -1):
-                if matrix[i][0] == 0 or matrix[0][j] == 0:
-                    matrix[i][j] = 0
-        if firstRowHasZero:
-            matrix[0] = [0] * n
-        return matrix
+class Solution:
+    def setZeroes(self, m1: List[List[int]]) -> None:
+        m=len(m1)
+        n=len(m1[0])
+        ans=[]
+        for i in range(m):
+            for j in range(n):
+                if m1[i][j]==0:
+                    ans.append([i,j])
+        for k in ans:
+            i,j=k[0],k[1]
+            m1[i]=[0]*n
+            for l in range(m):
+                m1[l][j]=0
+        return m1
