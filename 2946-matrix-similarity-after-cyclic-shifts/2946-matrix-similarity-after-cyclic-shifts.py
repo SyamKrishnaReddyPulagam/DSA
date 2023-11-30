@@ -5,6 +5,9 @@ class Solution:
         even,odd=[],[]
         k=k%n
         for i in range(m):
-            mat[i]=mat[i][k:]+mat[i][:k]
+            if i%2==0:
+                mat[i]=mat[i][k:]+mat[i][:k]
+            else:
+                mat[i]=mat[i][-k:]+mat[i][:-k]
         return mat==matrix
             
