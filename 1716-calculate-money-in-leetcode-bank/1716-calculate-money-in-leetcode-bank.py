@@ -1,14 +1,12 @@
-class Solution:
-    def totalMoney(self, n: int) -> int:
-        arr=[0]*n
-        arr[0]=1
-        ans=arr[0]
-        cache=0
-        for i in range(1,n):
-            if i==cache+7:
-                arr[i]=arr[cache]+1
-                cache=i
-            else:
-                arr[i]=arr[i-1]+1
-            ans+=arr[i]
+class Solution(object):
+    def totalMoney(self, n):
+        weeks,days=n//7,n%7
+        monday=1
+        ans=0
+        while weeks>=1:
+            ans+=(7*(2*monday+6))/2
+            monday+=1
+            weeks-=1
+        if days>=1:
+            ans+=(days*(2*monday+(days-1)))/2
         return ans
