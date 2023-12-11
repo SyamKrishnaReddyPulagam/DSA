@@ -10,6 +10,8 @@ class Solution:
         def inorder(root):
             if not root:
                 return
+            if len(ans)==k:
+                return ans
             inorder(root.left)
             ans.append(root.val)
             inorder(root.right)
