@@ -14,8 +14,13 @@ class Solution:
                 i+=1
             else:
                 j+=1
-        for i in range(m):
-            for j in range(n):
-                if mat[i][j]==1 and row[i]==1 and col[j]==1:
-                    ans+=1
+        i,j=0,0
+        while i<m:
+            if mat[i][j]==1 and row[i]==1 and col[j]==1:
+                ans+=1
+            if j==n-1:
+                j=0
+                i+=1
+            else:
+                j+=1
         return ans
