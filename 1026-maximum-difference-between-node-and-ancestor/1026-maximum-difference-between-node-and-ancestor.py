@@ -15,7 +15,6 @@ class Solution:
             help(root.left, val)
             help(root.right, val)
         def trav(root):
-            ans = 0
             if not root:
                 return
             help(root, root.val)
