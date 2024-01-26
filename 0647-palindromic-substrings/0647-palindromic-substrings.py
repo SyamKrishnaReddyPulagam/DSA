@@ -1,18 +1,14 @@
-class Solution(object):
-    def countSubstrings(self, s):
-        temp=[]
-        def func(s,temp):
-            for i in range(len(s)):
-                temp.append(s[i])
-                for j in range(i+1,len(s)):
-                    temp.append(s[i:j+1])
-        func(s,temp)
-        def func1(s):
-            if s==s[::-1]:
-                return True
-            return False
+class Solution:
+    def countSubstrings(self, s: str) -> int:
         ans=0
-        for i in range(len(temp)):
-            if func1(temp[i]):
-                ans+=1
+        def func(s,i,j):
+            count=0
+            while i>=0 and j<len(s) and s[i]==s[j]:
+                count+=1
+                i-=1
+                j+=1
+            return count
+        for i in range(len(s)):
+            ans+=func(s,i,i)
+            ans+=func(s,i,i+1)
         return ans
