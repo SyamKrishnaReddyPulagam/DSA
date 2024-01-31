@@ -1,12 +1,11 @@
-class Solution:
-    def countKeyChanges(self, s: str) -> int:
+class Solution(object):
+    def countKeyChanges(self, s):
+        s=lower(s)
         n=len(s)
         i=1
         ans=0
         while i<n:
-            if s[i]==s[i-1].lower() or s[i]==s[i-1].upper():
-                i+=1
-            else:
+            if s[i]!=s[i-1]:
                 ans+=1
-                i+=1
+            i+=1
         return ans
