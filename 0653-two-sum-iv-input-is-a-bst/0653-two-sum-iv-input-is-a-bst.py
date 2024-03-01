@@ -18,16 +18,16 @@ class Solution:
                         stack.append(node.left)
                     if node.right:
                         stack.append(node.right)
-                ans.append(temp)
+                ans+=temp
             return ans
-        nums=bfs(root)
-        ans=[]
-        for i in nums:
-            ans+=i
-        if len(ans)<2:
-            return False
-        for i in range(len(ans)):
-            for j in range(i+1,len(ans)):
-                if ans[i]+ans[j]==k:
-                    return True
+        ans=bfs(root)
+        ans.sort()
+        i,j=0,len(ans)-1
+        while i<j:
+            if ans[i]+ans[j]==k:
+                return True
+            elif ans[i]+ans[j]>k:
+                j-=1
+            elif ans[i]+ans[j]<k:
+                i+=1
         return False
