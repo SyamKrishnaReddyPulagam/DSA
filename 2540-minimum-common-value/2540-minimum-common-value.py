@@ -11,7 +11,6 @@ class Solution:
                 j+=1
         return -1"""
         a=set(nums1) & set(nums2)
-        a=list(a)
         if not a:
             return -1
         return min(a)
