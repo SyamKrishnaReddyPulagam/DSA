@@ -5,8 +5,7 @@ class Solution:
         for i in range(len(order)):
             if order[i] in dicti:
                 ans+=order[i]*dicti[order[i]]
-        order,s=set(order),set(s)
-        s=s-order
-        for i in s:
+                del dicti[order[i]]
+        for i in dicti:
             ans+=i*dicti[i]
         return ans
