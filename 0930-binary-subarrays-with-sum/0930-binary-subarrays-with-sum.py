@@ -7,13 +7,10 @@ class Solution:
             left,right=0,0
             while left<len(arr) and right<len(arr):
                 sums+=arr[right]
-                if sums<=goal:
-                    ans+=right-left+1
-                else:
-                    while sums>goal:
-                        sums-=arr[left]
-                        left+=1
-                    ans+=right-left+1
+                while sums>goal:
+                    sums-=arr[left]
+                    left+=1
+                ans+=right-left+1
                 right+=1
             return ans
         return func(nums,goal)-func(nums,goal-1)
