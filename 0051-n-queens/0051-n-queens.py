@@ -1,27 +1,45 @@
-class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
-        col=set()
-        posD,negD=set(),set()
-        ans=[]
-        board=[["."]*n for i in range(n)]
-        def func(r):
-            if r==n:
-                temp=["".join(i) for i in board]
+class Solution(object):
+    def solveNQueens(self, n):
+        def issafe(row,col,board,n):
+            row1,col1=row,col
+            
+            #upper diagnol
+            while row1>=0 and col1>=0:
+                if board[row1][col1]=="Q":
+                    return False
+                row1-=1
+                col1-=1
+             
+            #row
+            row1,col1=row,col
+            while col1>=0:
+                if board[row1][col1]=="Q":
+                    return False
+                col1-=1
+            
+            #column
+            col1=col
+            while row1<n and col1>=0:
+                if board[row1][col1]=="Q":
+                    return False
+                row1+=1
+                col1-=1
+            
+            return True
+        def func(col,board,n,ans):
+            if col==n:
+                temp=[]
+                for i in board:
+                    temp.append("".join(i))
                 ans.append(temp)
                 return
-            for c in range(n):
-                if c in col or (r+c) in posD or (r-c) in negD:
-                    continue
-                col.add(c)
-                posD.add(r+c)
-                negD.add(r-c)
-                board[r][c]="Q"
-                
-                func(r+1)
-                
-                col.remove(c)
-                posD.remove(r+c)
-                negD.remove(r-c)
-                board[r][c]="."
-        func(0)
+            for r in range(n):
+                if issafe(r,col,board,n):
+                    board[r][col]="Q"
+                    func(col+1,board,n,ans)
+                    board[r][col]="."
+        ans=[]
+        board=[["." for _ in range(n)]for _ in range(n)]
+        func(0,board,n,ans)
         return ans
+                
