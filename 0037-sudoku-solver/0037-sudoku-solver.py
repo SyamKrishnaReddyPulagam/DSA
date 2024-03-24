@@ -6,8 +6,12 @@ class Solution:
                     return False
                 if board[row][i]==num:
                     return False
-                if board[3*(row//3)+i//3][3*(col//3)+i%3]==num:
-                    return False
+            a,b=row//3,col//3
+            dicti={0:0,1:3,2:6}
+            for i in range(dicti[a],dicti[a]+3,1):
+                for j in range(dicti[b],dicti[b]+3,1):
+                    if board[i][j]==num:
+                        return False
             return True
         def func(board):
             for i in range(len(board)):
