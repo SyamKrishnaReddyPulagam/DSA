@@ -1,21 +1,18 @@
-class Solution:
-    def maxSubarrayLength(self, nums: List[int], k: int) -> int:
-        n=len(nums)
+class Solution(object):
+    def maxSubarrayLength(self, nums, k):
+        dicti,ans={},0
+        left,right,n=0,0,len(nums)
         if k>=n:
             return n
-        l,r=0,0
-        ans=0
-        dicti={}
-        while r<n:
-            if nums[r] in dicti:
-                dicti[nums[r]]+=1
-                if dicti[nums[r]]>k:
-                    ans=max(ans,r-l)
-                    while dicti[nums[r]]>k:
-                        dicti[nums[l]]-=1
-                        l+=1
+        while right<n:
+            if nums[right] not in dicti:
+                dicti[nums[right]]=1
             else:
-                dicti[nums[r]]=1
-            r+=1 
-        ans=max(ans,r-l)
+                dicti[nums[right]]+=1
+            while dicti[nums[right]]>k:
+                ans=max(ans,right-left)
+                dicti[nums[left]]-=1
+                left+=1
+            right+=1
+        ans=max(ans,right-left)
         return ans
