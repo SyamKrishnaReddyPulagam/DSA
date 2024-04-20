@@ -6,7 +6,7 @@ class Solution:
             visited.add((i,j))
             queue=deque()
             queue.append([i,j])
-            temp.append([i,j])
+            mini,maxi=[i,j],[i,j]
             while queue:
                 for _ in range(len(queue)):
                     node=queue.popleft()
@@ -16,8 +16,11 @@ class Solution:
                         if 0<=x<m and 0<=y<n and land[x][y]==1 and (x,y) not in visited:
                             visited.add((x,y))
                             queue.append([x,y])
-                            temp.append([x,y])
-            return temp,visited
+                            if x+y<mini[0]+mini[1]:
+                                mini=[x,y]
+                            if x+y>maxi[0]+maxi[1]:
+                                maxi=[x,y]
+            return mini+maxi,visited
         key=set()
         adj=[]
         ans=[]
@@ -29,6 +32,5 @@ class Solution:
             if (i,j) not in key:
                 val,key=dfs(i,j,land,key)
                 if val:
-                    val.sort(key=lambda x:(x[0],x[1]))
-                    ans.append([val[0][0],val[0][1],val[-1][0],val[-1][1]])
+                    ans.append(val)
         return ans
