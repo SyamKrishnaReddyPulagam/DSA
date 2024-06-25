@@ -6,24 +6,16 @@
 #         self.right = right
 class Solution:
     def bstToGst(self, root: TreeNode) -> TreeNode:
-        def inorder(root,ans):
+        def func(root):
             if not root:
                 return
-            inorder(root.right,ans)
-            ans.append(root.val)
-            inorder(root.left,ans)
-            return
-        temp=[]
-        inorder(root,temp)
-        dicti,cur_sum={},0
-        for i in temp:
-            cur_sum+=i
-            dicti[i]=cur_sum
-        def func(root,dicti):
-            if not root:
-                return
-            root.val=dicti[root.val]
-            func(root.left,dicti)
-            func(root.right,dicti)
+            if root.right:
+                func(root.right)
+            ans[0]+=root.val
+            #print(ans[0],root.val)
+            root.val=ans[0]
+            if root.left:
+                func(root.left)
             return root
-        return func(root,dicti)
+        ans=[0]
+        return func(root)
