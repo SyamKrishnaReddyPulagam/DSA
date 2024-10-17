@@ -1,10 +1,12 @@
 class Solution:
     def climbStairs(self, n: int) -> int:
-        if n<4:
-            return n
-        arr=[0]*(n+1)
-        arr[-1]=1
-        arr[-2]=1
-        for i in range(n-2,-1,-1):
-            arr[i]=arr[i+1]+arr[i+2]
-        return arr[0]
+        if n==1:
+            return 1
+        if n==2:
+            return 2
+        dp=[0]*n
+        dp[0],dp[1]=1,2
+        for i in range(2,n):
+            dp[i]=dp[i-2]+dp[i-1]
+        print(dp)
+        return dp[-1]
